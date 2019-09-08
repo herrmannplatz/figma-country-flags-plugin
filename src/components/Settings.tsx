@@ -11,7 +11,7 @@ function Settings({ categories, ratio, onChangeContinent, onChangeRatio }) {
       <div className="settings__item">
         <div className="label">Continent</div>
         <select
-          className="select-menu"
+          className="select-menu visuallyhidden"
           onChange={e => onChangeContinent(e.target.value)}
           defaultValue="World"
         >

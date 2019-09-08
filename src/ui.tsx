@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 // figma-plugin-cs
@@ -14,17 +14,17 @@ import { includes, decodeDataURI } from "./lib/utils";
 
 import "./ui.css";
 
-// need to be called when content is rendered
-setTimeout(() => {
-  (window as any).selectMenu.init();
-  (window as any).iconInput.init();
-}, 0);
-
 const App = () => {
   const noContinent = "World";
   const [query, setQuery] = useState("");
   const [ratio, setRatio] = useState("1x1");
   const [continent, setContinent] = useState(noContinent);
+
+  useEffect(() => {
+    // need to be called when content is rendered
+    (window as any).selectMenu.init();
+    (window as any).iconInput.init();
+  }, []);
 
   const flags = countries.filter(({ continent: c, name, alpha_2 }) => {
     const isSelectedContinent = c === continent || continent === noContinent;
