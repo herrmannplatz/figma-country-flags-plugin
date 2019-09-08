@@ -9,25 +9,10 @@ import "./lib/figma-plugin-ds/index.css";
 import SearchInput from "./components/SearchInput";
 import Settings from "./components/Settings";
 
-import flagIcon from "./lib/flag-icons";
+import { countries, continents, getFlagIcon } from "./lib/flag-icons/index";
 import { includes, decodeDataURI } from "./lib/utils";
 
 import "./ui.css";
-
-const countriesJSON = require("./countries");
-
-const countries = countriesJSON.map(country => ({
-  ...country,
-  flag_1x1: flagIcon[country.flag_1x1],
-  flag_4x3: flagIcon[country.flag_4x3]
-}));
-
-const getFlagIcon = (flag, ratio) => flag["flag_" + ratio];
-
-const categories = [
-  "World",
-  ...new Set(countries.map(({ continent }) => continent))
-];
 
 // need to be called when content is rendered
 setTimeout(() => {
@@ -58,7 +43,7 @@ const App = () => {
       <div className="header">
         <SearchInput onChange={setQuery} />
         <Settings
-          categories={categories}
+          categories={continents}
           ratio={ratio}
           onChangeContinent={setContinent}
           onChangeRatio={setRatio}
