@@ -21,12 +21,13 @@ setTimeout(() => {
 }, 0);
 
 const App = () => {
+  const noContinent = "World";
   const [query, setQuery] = useState("");
   const [ratio, setRatio] = useState("1x1");
-  const [continent, setContinent] = useState("World");
+  const [continent, setContinent] = useState(noContinent);
 
   const flags = countries.filter(({ continent: c, name, alpha_2 }) => {
-    const isSelectedContinent = c === continent || continent === "World";
+    const isSelectedContinent = c === continent || continent === noContinent;
     const matchesQuery =
       includes(name, query) || query.toUpperCase() === alpha_2;
     return isSelectedContinent && matchesQuery;
@@ -43,7 +44,7 @@ const App = () => {
       <div className="header">
         <SearchInput onChange={setQuery} />
         <Settings
-          categories={continents}
+          categories={[noContinent, ...continents]}
           ratio={ratio}
           onChangeContinent={setContinent}
           onChangeRatio={setRatio}
