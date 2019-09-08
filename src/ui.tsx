@@ -9,7 +9,7 @@ import "./lib/figma-plugin-ds/index.css";
 import SearchInput from "./components/SearchInput";
 import Settings from "./components/Settings";
 
-import { countries, continents, getFlagIcon } from "./lib/flag-icons";
+import { countries, continents } from "./lib/flag-icons";
 import { includes, decodeDataURI } from "./lib/utils";
 
 import "./ui.css";
@@ -34,8 +34,7 @@ const App = () => {
   });
 
   const onCreate = flag => {
-    const dataURI = getFlagIcon(flag, ratio);
-    const svg = decodeDataURI(dataURI);
+    const svg = decodeDataURI(flag["flag_" + ratio]);
     parent.postMessage({ pluginMessage: { type: "create-flag", svg } }, "*");
   };
 
@@ -53,8 +52,12 @@ const App = () => {
       <div className="content">
         <div className="flags">
           {flags.map(flag => (
-            <div onClick={() => onCreate(flag)} className="flag" key={flag.id}>
-              <img src={getFlagIcon(flag, ratio)} />
+            <div
+              onClick={() => onCreate(flag)}
+              className="flag"
+              key={flag.alpha_2}
+            >
+              <img src={flag["flag_" + ratio]} />
               <div className="flag-name">{flag.name}</div>
             </div>
           ))}

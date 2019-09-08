@@ -14,5 +14,3 @@ export const countries = countriesJSON.map(country => ({
 }));
 
 export const continents = [...new Set(countries.map(_ => _.continent))];
-
-export const getFlagIcon = (flag, ratio) => flag["flag_" + ratio];
