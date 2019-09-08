@@ -1,0 +1,7 @@
+.input__section {
+  border-bottom: 1px solid #dedede;
+  padding: 4px 8px;
+}
+.input-icon__input {
+  background: none !important;
+}

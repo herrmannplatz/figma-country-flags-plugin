@@ -1,0 +1,78 @@
+.settings {
+  border-bottom: 1px solid #dedede;
+  padding: 8px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 8px;
+}
+.one-by-one {
+  width: 12px;
+  height: 12px;
+  border: 1px solid currentColor;
+}
+.four-by-three {
+  width: 12px;
+  height: 8px;
+  border: 1px solid currentColor;
+}
+
+.segmented_control--container {
+  position: relative;
+  height: 30px;
+  border-radius: 2px;
+  border: 2px solid transparent;
+  padding-left: 1px;
+  padding-right: 1px;
+  align-self: center;
+  justify-self: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-clip: padding-box;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.segmented_control--container:hover:before {
+  content: "";
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+.segmented_control--_segment {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: center;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+.segmented_control--container:not(.segmented_control--containerDisabled):hover
+  .segmented_control--segmentSelected.segmented_control--_segment:before {
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+.segmented_control--container:not(.segmented_control--containerDisabled):hover
+  .segmented_control--segmentSelected:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.segmented_control--segmentUnselected {
+  fill: #333;
+  color: #333;
+}
+.segmented_control--segmentSelected {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  border-color: rgba(0, 0, 0, 0.1);
+}
