@@ -9,7 +9,7 @@ import "./lib/figma-plugin-ds/index.css";
 import SearchInput from "./components/SearchInput";
 import Settings from "./components/Settings";
 
-import { countries, continents, getFlagIcon } from "./lib/flag-icons/index";
+import { countries, continents, getFlagIcon } from "./lib/flag-icons";
 import { includes, decodeDataURI } from "./lib/utils";
 
 import "./ui.css";
