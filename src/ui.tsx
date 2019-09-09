@@ -17,7 +17,7 @@ import "./ui.css";
 const App = () => {
   const noContinent = "World";
   const [query, setQuery] = useState("");
-  const [ratio, setRatio] = useState("1x1");
+  const [ratio, setRatio] = useState("4x3");
   const [continent, setContinent] = useState(noContinent);
 
   useEffect(() => {
