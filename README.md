@@ -4,7 +4,7 @@
 
 > Add country flags to your figma designs.
 
-Build with http://flag-icon-css.lip.is
+Build with [github.com/lipis/flag-icon-css](https://github.com/lipis/flag-icon-css)
 
 ## Roadmap
 
