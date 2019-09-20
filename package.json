@@ -4,11 +4,11 @@
   "description": "This plugin template uses Typescript. If you are familiar with Javascript, Typescript will look very familiar. In fact, valid Javascript code is already valid Typescript code.",
   "main": "code.js",
   "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development --watch",
     "fix": "yarn prettier --write",
     "prettier": "prettier \"**/*.{json,md,css,ts,yml,js}\"",
-    "test": "yarn prettier --list-different",
-    "build": "webpack --mode=production",
-    "dev": "webpack --mode=development --watch"
+    "test": "yarn prettier --list-different"
   },
   "keywords": [],
   "author": "",
