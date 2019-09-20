@@ -1,232 +1,232 @@
 // Figma Plugin API version 1, update 1
 
 // Global variable with Figma's plugin API.
-declare const figma: PluginAPI
-declare const __html__: string
+declare const figma: PluginAPI;
+declare const __html__: string;
 
 interface PluginAPI {
-  readonly apiVersion: '1.0.0'
-  readonly command: string
-  readonly viewport: ViewportAPI
-  closePlugin(message?: string): void
+  readonly apiVersion: '1.0.0';
+  readonly command: string;
+  readonly viewport: ViewportAPI;
+  closePlugin(message?: string): void;
 
-  notify(message: string, options?: NotificationOptions): NotificationHandler
+  notify(message: string, options?: NotificationOptions): NotificationHandler;
 
-  showUI(html: string, options?: ShowUIOptions): void
-  readonly ui: UIAPI
+  showUI(html: string, options?: ShowUIOptions): void;
+  readonly ui: UIAPI;
 
-  readonly clientStorage: ClientStorageAPI
+  readonly clientStorage: ClientStorageAPI;
 
-  getNodeById(id: string): BaseNode | null
-  getStyleById(id: string): BaseStyle | null
+  getNodeById(id: string): BaseNode | null;
+  getStyleById(id: string): BaseStyle | null;
 
-  readonly root: DocumentNode
-  currentPage: PageNode
+  readonly root: DocumentNode;
+  currentPage: PageNode;
 
-  readonly mixed: symbol
+  readonly mixed: symbol;
 
-  createRectangle(): RectangleNode
-  createLine(): LineNode
-  createEllipse(): EllipseNode
-  createPolygon(): PolygonNode
-  createStar(): StarNode
-  createVector(): VectorNode
-  createText(): TextNode
-  createFrame(): FrameNode
-  createComponent(): ComponentNode
-  createPage(): PageNode
-  createSlice(): SliceNode
+  createRectangle(): RectangleNode;
+  createLine(): LineNode;
+  createEllipse(): EllipseNode;
+  createPolygon(): PolygonNode;
+  createStar(): StarNode;
+  createVector(): VectorNode;
+  createText(): TextNode;
+  createFrame(): FrameNode;
+  createComponent(): ComponentNode;
+  createPage(): PageNode;
+  createSlice(): SliceNode;
   /**
    * [DEPRECATED]: This API often fails to create a valid boolean operation. Use figma.union, figma.subtract, figma.intersect and figma.exclude instead.
    */
-  createBooleanOperation(): BooleanOperationNode
+  createBooleanOperation(): BooleanOperationNode;
 
-  createPaintStyle(): PaintStyle
-  createTextStyle(): TextStyle
-  createEffectStyle(): EffectStyle
-  createGridStyle(): GridStyle
+  createPaintStyle(): PaintStyle;
+  createTextStyle(): TextStyle;
+  createEffectStyle(): EffectStyle;
+  createGridStyle(): GridStyle;
 
   // The styles are returned in the same order as displayed in the UI. Only
   // local styles are returned. Never styles from team library.
-  getLocalPaintStyles(): PaintStyle[]
-  getLocalTextStyles(): TextStyle[]
-  getLocalEffectStyles(): EffectStyle[]
-  getLocalGridStyles(): GridStyle[]
+  getLocalPaintStyles(): PaintStyle[];
+  getLocalTextStyles(): TextStyle[];
+  getLocalEffectStyles(): EffectStyle[];
+  getLocalGridStyles(): GridStyle[];
 
-  importComponentByKeyAsync(key: string): Promise<ComponentNode>
-  importStyleByKeyAsync(key: string): Promise<BaseStyle>
+  importComponentByKeyAsync(key: string): Promise<ComponentNode>;
+  importStyleByKeyAsync(key: string): Promise<BaseStyle>;
 
-  listAvailableFontsAsync(): Promise<Font[]>
-  loadFontAsync(fontName: FontName): Promise<void>
-  readonly hasMissingFont: boolean
+  listAvailableFontsAsync(): Promise<Font[]>;
+  loadFontAsync(fontName: FontName): Promise<void>;
+  readonly hasMissingFont: boolean;
 
-  createNodeFromSvg(svg: string): FrameNode
+  createNodeFromSvg(svg: string): FrameNode;
 
-  createImage(data: Uint8Array): Image
-  getImageByHash(hash: string): Image
+  createImage(data: Uint8Array): Image;
+  getImageByHash(hash: string): Image;
 
   group(
     nodes: ReadonlyArray<BaseNode>,
     parent: BaseNode & ChildrenMixin,
     index?: number,
-  ): FrameNode
+  ): FrameNode;
   flatten(
     nodes: ReadonlyArray<BaseNode>,
     parent?: BaseNode & ChildrenMixin,
     index?: number,
-  ): VectorNode
+  ): VectorNode;
 
   union(
     nodes: ReadonlyArray<BaseNode>,
     parent: BaseNode & ChildrenMixin,
     index?: number,
-  ): BooleanOperationNode
+  ): BooleanOperationNode;
   subtract(
     nodes: ReadonlyArray<BaseNode>,
     parent: BaseNode & ChildrenMixin,
     index?: number,
-  ): BooleanOperationNode
+  ): BooleanOperationNode;
   intersect(
     nodes: ReadonlyArray<BaseNode>,
     parent: BaseNode & ChildrenMixin,
     index?: number,
-  ): BooleanOperationNode
+  ): BooleanOperationNode;
   exclude(
     nodes: ReadonlyArray<BaseNode>,
     parent: BaseNode & ChildrenMixin,
     index?: number,
-  ): BooleanOperationNode
+  ): BooleanOperationNode;
 }
 
 interface ClientStorageAPI {
-  getAsync(key: string): Promise<any | undefined>
-  setAsync(key: string, value: any): Promise<void>
+  getAsync(key: string): Promise<any | undefined>;
+  setAsync(key: string, value: any): Promise<void>;
 }
 
 interface NotificationOptions {
-  timeout?: number
+  timeout?: number;
 }
 
 interface NotificationHandler {
-  cancel: () => void
+  cancel: () => void;
 }
 
 interface ShowUIOptions {
-  visible?: boolean
-  width?: number
-  height?: number
+  visible?: boolean;
+  width?: number;
+  height?: number;
 }
 
 interface UIPostMessageOptions {
-  origin?: string
+  origin?: string;
 }
 
 interface OnMessageProperties {
-  origin: string
+  origin: string;
 }
 
 interface UIAPI {
-  show(): void
-  hide(): void
-  resize(width: number, height: number): void
-  close(): void
+  show(): void;
+  hide(): void;
+  resize(width: number, height: number): void;
+  close(): void;
 
-  postMessage(pluginMessage: any, options?: UIPostMessageOptions): void
+  postMessage(pluginMessage: any, options?: UIPostMessageOptions): void;
   onmessage:
     | ((pluginMessage: any, props: OnMessageProperties) => void)
-    | undefined
+    | undefined;
 }
 
 interface ViewportAPI {
-  center: {x: number; y: number}
-  zoom: number
-  scrollAndZoomIntoView(nodes: ReadonlyArray<BaseNode>)
+  center: {x: number; y: number};
+  zoom: number;
+  scrollAndZoomIntoView(nodes: ReadonlyArray<BaseNode>);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Datatypes
 
-type Transform = [[number, number, number], [number, number, number]]
+type Transform = [[number, number, number], [number, number, number]];
 
 interface Vector {
-  readonly x: number
-  readonly y: number
+  readonly x: number;
+  readonly y: number;
 }
 
 interface RGB {
-  readonly r: number
-  readonly g: number
-  readonly b: number
+  readonly r: number;
+  readonly g: number;
+  readonly b: number;
 }
 
 interface RGBA {
-  readonly r: number
-  readonly g: number
-  readonly b: number
-  readonly a: number
+  readonly r: number;
+  readonly g: number;
+  readonly b: number;
+  readonly a: number;
 }
 
 interface FontName {
-  readonly family: string
-  readonly style: string
+  readonly family: string;
+  readonly style: string;
 }
 
-type TextCase = 'ORIGINAL' | 'UPPER' | 'LOWER' | 'TITLE'
+type TextCase = 'ORIGINAL' | 'UPPER' | 'LOWER' | 'TITLE';
 
-type TextDecoration = 'NONE' | 'UNDERLINE' | 'STRIKETHROUGH'
+type TextDecoration = 'NONE' | 'UNDERLINE' | 'STRIKETHROUGH';
 
 interface ArcData {
-  readonly startingAngle: number
-  readonly endingAngle: number
-  readonly innerRadius: number
+  readonly startingAngle: number;
+  readonly endingAngle: number;
+  readonly innerRadius: number;
 }
 
 interface ShadowEffect {
-  readonly type: 'DROP_SHADOW' | 'INNER_SHADOW'
-  readonly color: RGBA
-  readonly offset: Vector
-  readonly radius: number
-  readonly visible: boolean
-  readonly blendMode: BlendMode
+  readonly type: 'DROP_SHADOW' | 'INNER_SHADOW';
+  readonly color: RGBA;
+  readonly offset: Vector;
+  readonly radius: number;
+  readonly visible: boolean;
+  readonly blendMode: BlendMode;
 }
 
 interface BlurEffect {
-  readonly type: 'LAYER_BLUR' | 'BACKGROUND_BLUR'
-  readonly radius: number
-  readonly visible: boolean
+  readonly type: 'LAYER_BLUR' | 'BACKGROUND_BLUR';
+  readonly radius: number;
+  readonly visible: boolean;
 }
 
-type Effect = ShadowEffect | BlurEffect
+type Effect = ShadowEffect | BlurEffect;
 
-type ConstraintType = 'MIN' | 'CENTER' | 'MAX' | 'STRETCH' | 'SCALE'
+type ConstraintType = 'MIN' | 'CENTER' | 'MAX' | 'STRETCH' | 'SCALE';
 
 interface Constraints {
-  readonly horizontal: ConstraintType
-  readonly vertical: ConstraintType
+  readonly horizontal: ConstraintType;
+  readonly vertical: ConstraintType;
 }
 
 interface ColorStop {
-  readonly position: number
-  readonly color: RGBA
+  readonly position: number;
+  readonly color: RGBA;
 }
 
 interface ImageFilters {
-  readonly exposure?: number
-  readonly contrast?: number
-  readonly saturation?: number
-  readonly temperature?: number
-  readonly tint?: number
-  readonly highlights?: number
-  readonly shadows?: number
+  readonly exposure?: number;
+  readonly contrast?: number;
+  readonly saturation?: number;
+  readonly temperature?: number;
+  readonly tint?: number;
+  readonly highlights?: number;
+  readonly shadows?: number;
 }
 
 interface SolidPaint {
-  readonly type: 'SOLID'
-  readonly color: RGB
+  readonly type: 'SOLID';
+  readonly color: RGB;
 
-  readonly visible?: boolean
-  readonly opacity?: number
-  readonly blendMode?: BlendMode
+  readonly visible?: boolean;
+  readonly opacity?: number;
+  readonly blendMode?: BlendMode;
 }
 
 interface GradientPaint {
@@ -234,139 +234,139 @@ interface GradientPaint {
     | 'GRADIENT_LINEAR'
     | 'GRADIENT_RADIAL'
     | 'GRADIENT_ANGULAR'
-    | 'GRADIENT_DIAMOND'
-  readonly gradientTransform: Transform
-  readonly gradientStops: ReadonlyArray<ColorStop>
+    | 'GRADIENT_DIAMOND';
+  readonly gradientTransform: Transform;
+  readonly gradientStops: ReadonlyArray<ColorStop>;
 
-  readonly visible?: boolean
-  readonly opacity?: number
-  readonly blendMode?: BlendMode
+  readonly visible?: boolean;
+  readonly opacity?: number;
+  readonly blendMode?: BlendMode;
 }
 
 interface ImagePaint {
-  readonly type: 'IMAGE'
-  readonly scaleMode: 'FILL' | 'FIT' | 'CROP' | 'TILE'
-  readonly imageHash: string | null
-  readonly imageTransform?: Transform // setting for "CROP"
-  readonly scalingFactor?: number // setting for "TILE"
-  readonly filters?: ImageFilters
+  readonly type: 'IMAGE';
+  readonly scaleMode: 'FILL' | 'FIT' | 'CROP' | 'TILE';
+  readonly imageHash: string | null;
+  readonly imageTransform?: Transform; // setting for "CROP"
+  readonly scalingFactor?: number; // setting for "TILE"
+  readonly filters?: ImageFilters;
 
-  readonly visible?: boolean
-  readonly opacity?: number
-  readonly blendMode?: BlendMode
+  readonly visible?: boolean;
+  readonly opacity?: number;
+  readonly blendMode?: BlendMode;
 }
 
-type Paint = SolidPaint | GradientPaint | ImagePaint
+type Paint = SolidPaint | GradientPaint | ImagePaint;
 
 interface Guide {
-  readonly axis: 'X' | 'Y'
-  readonly offset: number
+  readonly axis: 'X' | 'Y';
+  readonly offset: number;
 }
 
 interface RowsColsLayoutGrid {
-  readonly pattern: 'ROWS' | 'COLUMNS'
-  readonly alignment: 'MIN' | 'MAX' | 'STRETCH' | 'CENTER'
-  readonly gutterSize: number
+  readonly pattern: 'ROWS' | 'COLUMNS';
+  readonly alignment: 'MIN' | 'MAX' | 'STRETCH' | 'CENTER';
+  readonly gutterSize: number;
 
-  readonly count: number // Infinity when "Auto" is set in the UI
-  readonly sectionSize?: number // Not set for alignment: "STRETCH"
-  readonly offset?: number // Not set for alignment: "CENTER"
+  readonly count: number; // Infinity when "Auto" is set in the UI
+  readonly sectionSize?: number; // Not set for alignment: "STRETCH"
+  readonly offset?: number; // Not set for alignment: "CENTER"
 
-  readonly visible?: boolean
-  readonly color?: RGBA
+  readonly visible?: boolean;
+  readonly color?: RGBA;
 }
 
 interface GridLayoutGrid {
-  readonly pattern: 'GRID'
-  readonly sectionSize: number
+  readonly pattern: 'GRID';
+  readonly sectionSize: number;
 
-  readonly visible?: boolean
-  readonly color?: RGBA
+  readonly visible?: boolean;
+  readonly color?: RGBA;
 }
 
-type LayoutGrid = RowsColsLayoutGrid | GridLayoutGrid
+type LayoutGrid = RowsColsLayoutGrid | GridLayoutGrid;
 
 interface ExportSettingsConstraints {
-  type: 'SCALE' | 'WIDTH' | 'HEIGHT'
-  value: number
+  type: 'SCALE' | 'WIDTH' | 'HEIGHT';
+  value: number;
 }
 
 interface ExportSettingsImage {
-  format: 'JPG' | 'PNG'
-  contentsOnly?: boolean // defaults to true
-  suffix?: string
-  constraint?: ExportSettingsConstraints
+  format: 'JPG' | 'PNG';
+  contentsOnly?: boolean; // defaults to true
+  suffix?: string;
+  constraint?: ExportSettingsConstraints;
 }
 
 interface ExportSettingsSVG {
-  format: 'SVG'
-  contentsOnly?: boolean // defaults to true
-  suffix?: string
-  svgOutlineText?: boolean // defaults to true
-  svgIdAttribute?: boolean // defaults to false
-  svgSimplifyStroke?: boolean // defaults to true
+  format: 'SVG';
+  contentsOnly?: boolean; // defaults to true
+  suffix?: string;
+  svgOutlineText?: boolean; // defaults to true
+  svgIdAttribute?: boolean; // defaults to false
+  svgSimplifyStroke?: boolean; // defaults to true
 }
 
 interface ExportSettingsPDF {
-  format: 'PDF'
-  contentsOnly?: boolean // defaults to true
-  suffix?: string
+  format: 'PDF';
+  contentsOnly?: boolean; // defaults to true
+  suffix?: string;
 }
 
 type ExportSettings =
   | ExportSettingsImage
   | ExportSettingsSVG
-  | ExportSettingsPDF
+  | ExportSettingsPDF;
 
-type WindingRule = 'NONZERO' | 'EVENODD'
+type WindingRule = 'NONZERO' | 'EVENODD';
 
 interface VectorVertex {
-  readonly x: number
-  readonly y: number
-  readonly strokeCap?: StrokeCap
-  readonly strokeJoin?: StrokeJoin
-  readonly cornerRadius?: number
-  readonly handleMirroring?: HandleMirroring
+  readonly x: number;
+  readonly y: number;
+  readonly strokeCap?: StrokeCap;
+  readonly strokeJoin?: StrokeJoin;
+  readonly cornerRadius?: number;
+  readonly handleMirroring?: HandleMirroring;
 }
 
 interface VectorSegment {
-  readonly start: number
-  readonly end: number
-  readonly tangentStart?: Vector // Defaults to { x: 0, y: 0 }
-  readonly tangentEnd?: Vector // Defaults to { x: 0, y: 0 }
+  readonly start: number;
+  readonly end: number;
+  readonly tangentStart?: Vector; // Defaults to { x: 0, y: 0 }
+  readonly tangentEnd?: Vector; // Defaults to { x: 0, y: 0 }
 }
 
 interface VectorRegion {
-  readonly windingRule: WindingRule
-  readonly loops: ReadonlyArray<ReadonlyArray<number>>
+  readonly windingRule: WindingRule;
+  readonly loops: ReadonlyArray<ReadonlyArray<number>>;
 }
 
 interface VectorNetwork {
-  readonly vertices: ReadonlyArray<VectorVertex>
-  readonly segments: ReadonlyArray<VectorSegment>
-  readonly regions?: ReadonlyArray<VectorRegion> // Defaults to []
+  readonly vertices: ReadonlyArray<VectorVertex>;
+  readonly segments: ReadonlyArray<VectorSegment>;
+  readonly regions?: ReadonlyArray<VectorRegion>; // Defaults to []
 }
 
 interface VectorPath {
-  readonly windingRule: WindingRule | 'NONE'
-  readonly data: string
+  readonly windingRule: WindingRule | 'NONE';
+  readonly data: string;
 }
 
-type VectorPaths = ReadonlyArray<VectorPath>
+type VectorPaths = ReadonlyArray<VectorPath>;
 
 interface LetterSpacing {
-  readonly value: number
-  readonly unit: 'PIXELS' | 'PERCENT'
+  readonly value: number;
+  readonly unit: 'PIXELS' | 'PERCENT';
 }
 
 type LineHeight =
   | {
-      readonly value: number
-      readonly unit: 'PIXELS' | 'PERCENT'
+      readonly value: number;
+      readonly unit: 'PIXELS' | 'PERCENT';
     }
   | {
-      readonly unit: 'AUTO'
-    }
+      readonly unit: 'AUTO';
+    };
 
 type BlendMode =
   | 'PASS_THROUGH'
@@ -387,80 +387,80 @@ type BlendMode =
   | 'HUE'
   | 'SATURATION'
   | 'COLOR'
-  | 'LUMINOSITY'
+  | 'LUMINOSITY';
 
 interface Font {
-  fontName: FontName
+  fontName: FontName;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Mixins
 
 interface BaseNodeMixin {
-  readonly id: string
-  readonly parent: (BaseNode & ChildrenMixin) | null
-  name: string // Note: setting this also sets `autoRename` to false on TextNodes
-  readonly removed: boolean
-  toString(): string
-  remove(): void
+  readonly id: string;
+  readonly parent: (BaseNode & ChildrenMixin) | null;
+  name: string; // Note: setting this also sets `autoRename` to false on TextNodes
+  readonly removed: boolean;
+  toString(): string;
+  remove(): void;
 
-  getPluginData(key: string): string
-  setPluginData(key: string, value: string): void
+  getPluginData(key: string): string;
+  setPluginData(key: string, value: string): void;
 
   // Namespace is a string that must be at least 3 alphanumeric characters, and should
   // be a name related to your plugin. Other plugins will be able to read this data.
-  getSharedPluginData(namespace: string, key: string): string
-  setSharedPluginData(namespace: string, key: string, value: string): void
+  getSharedPluginData(namespace: string, key: string): string;
+  setSharedPluginData(namespace: string, key: string, value: string): void;
 }
 
 interface SceneNodeMixin {
-  visible: boolean
-  locked: boolean
+  visible: boolean;
+  locked: boolean;
 }
 
 interface ChildrenMixin {
-  readonly children: ReadonlyArray<SceneNode>
+  readonly children: ReadonlyArray<SceneNode>;
 
-  appendChild(child: SceneNode): void
-  insertChild(index: number, child: SceneNode): void
+  appendChild(child: SceneNode): void;
+  insertChild(index: number, child: SceneNode): void;
 
-  findAll(callback?: (node: SceneNode) => boolean): SceneNode[]
-  findOne(callback: (node: SceneNode) => boolean): SceneNode | null
+  findAll(callback?: (node: SceneNode) => boolean): SceneNode[];
+  findOne(callback: (node: SceneNode) => boolean): SceneNode | null;
 }
 
 interface ConstraintMixin {
-  constraints: Constraints
+  constraints: Constraints;
 }
 
 interface LayoutMixin {
-  readonly absoluteTransform: Transform
-  relativeTransform: Transform
-  x: number
-  y: number
-  rotation: number // In degrees
+  readonly absoluteTransform: Transform;
+  relativeTransform: Transform;
+  x: number;
+  y: number;
+  rotation: number; // In degrees
 
-  readonly width: number
-  readonly height: number
+  readonly width: number;
+  readonly height: number;
 
-  resize(width: number, height: number): void
-  resizeWithoutConstraints(width: number, height: number): void
+  resize(width: number, height: number): void;
+  resizeWithoutConstraints(width: number, height: number): void;
 }
 
 interface BlendMixin {
-  opacity: number
-  blendMode: BlendMode
-  isMask: boolean
-  effects: ReadonlyArray<Effect>
-  effectStyleId: string
+  opacity: number;
+  blendMode: BlendMode;
+  isMask: boolean;
+  effects: ReadonlyArray<Effect>;
+  effectStyleId: string;
 }
 
 interface FrameMixin {
-  backgrounds: ReadonlyArray<Paint>
-  layoutGrids: ReadonlyArray<LayoutGrid>
-  clipsContent: boolean
-  guides: ReadonlyArray<Guide>
-  gridStyleId: string
-  backgroundStyleId: string
+  backgrounds: ReadonlyArray<Paint>;
+  layoutGrids: ReadonlyArray<LayoutGrid>;
+  clipsContent: boolean;
+  guides: ReadonlyArray<Guide>;
+  gridStyleId: string;
+  backgroundStyleId: string;
 }
 
 type StrokeCap =
@@ -468,30 +468,30 @@ type StrokeCap =
   | 'ROUND'
   | 'SQUARE'
   | 'ARROW_LINES'
-  | 'ARROW_EQUILATERAL'
-type StrokeJoin = 'MITER' | 'BEVEL' | 'ROUND'
-type HandleMirroring = 'NONE' | 'ANGLE' | 'ANGLE_AND_LENGTH'
+  | 'ARROW_EQUILATERAL';
+type StrokeJoin = 'MITER' | 'BEVEL' | 'ROUND';
+type HandleMirroring = 'NONE' | 'ANGLE' | 'ANGLE_AND_LENGTH';
 
 interface GeometryMixin {
-  fills: ReadonlyArray<Paint> | symbol
-  strokes: ReadonlyArray<Paint>
-  strokeWeight: number
-  strokeAlign: 'CENTER' | 'INSIDE' | 'OUTSIDE'
-  strokeCap: StrokeCap | symbol
-  strokeJoin: StrokeJoin | symbol
-  dashPattern: ReadonlyArray<number>
-  fillStyleId: string | symbol
-  strokeStyleId: string
+  fills: ReadonlyArray<Paint> | symbol;
+  strokes: ReadonlyArray<Paint>;
+  strokeWeight: number;
+  strokeAlign: 'CENTER' | 'INSIDE' | 'OUTSIDE';
+  strokeCap: StrokeCap | symbol;
+  strokeJoin: StrokeJoin | symbol;
+  dashPattern: ReadonlyArray<number>;
+  fillStyleId: string | symbol;
+  strokeStyleId: string;
 }
 
 interface CornerMixin {
-  cornerRadius: number | symbol
-  cornerSmoothing: number
+  cornerRadius: number | symbol;
+  cornerSmoothing: number;
 }
 
 interface ExportMixin {
-  exportSettings: ReadonlyArray<ExportSettings>
-  exportAsync(settings?: ExportSettings): Promise<Uint8Array> // Defaults to PNG format
+  exportSettings: ReadonlyArray<ExportSettings>;
+  exportAsync(settings?: ExportSettings): Promise<Uint8Array>; // Defaults to PNG format
 }
 
 interface DefaultShapeMixin
@@ -516,34 +516,34 @@ interface DefaultContainerMixin
 // Nodes
 
 interface DocumentNode extends BaseNodeMixin {
-  readonly type: 'DOCUMENT'
+  readonly type: 'DOCUMENT';
 
-  readonly children: ReadonlyArray<PageNode>
+  readonly children: ReadonlyArray<PageNode>;
 
-  appendChild(child: PageNode): void
-  insertChild(index: number, child: PageNode): void
+  appendChild(child: PageNode): void;
+  insertChild(index: number, child: PageNode): void;
 
   findAll(
     callback?: (node: PageNode | SceneNode) => boolean,
-  ): Array<PageNode | SceneNode>
+  ): Array<PageNode | SceneNode>;
   findOne(
     callback: (node: PageNode | SceneNode) => boolean,
-  ): PageNode | SceneNode | null
+  ): PageNode | SceneNode | null;
 }
 
 interface PageNode extends BaseNodeMixin, ChildrenMixin, ExportMixin {
-  readonly type: 'PAGE'
-  clone(): PageNode
+  readonly type: 'PAGE';
+  clone(): PageNode;
 
-  guides: ReadonlyArray<Guide>
-  selection: ReadonlyArray<SceneNode>
+  guides: ReadonlyArray<Guide>;
+  selection: ReadonlyArray<SceneNode>;
 
-  backgrounds: ReadonlyArray<Paint>
+  backgrounds: ReadonlyArray<Paint>;
 }
 
 interface FrameNode extends DefaultContainerMixin {
-  readonly type: 'FRAME' | 'GROUP'
-  clone(): FrameNode
+  readonly type: 'FRAME' | 'GROUP';
+  clone(): FrameNode;
 }
 
 interface SliceNode
@@ -551,124 +551,124 @@ interface SliceNode
     SceneNodeMixin,
     LayoutMixin,
     ExportMixin {
-  readonly type: 'SLICE'
-  clone(): SliceNode
+  readonly type: 'SLICE';
+  clone(): SliceNode;
 }
 
 interface RectangleNode
   extends DefaultShapeMixin,
     ConstraintMixin,
     CornerMixin {
-  readonly type: 'RECTANGLE'
-  clone(): RectangleNode
-  topLeftRadius: number
-  topRightRadius: number
-  bottomLeftRadius: number
-  bottomRightRadius: number
+  readonly type: 'RECTANGLE';
+  clone(): RectangleNode;
+  topLeftRadius: number;
+  topRightRadius: number;
+  bottomLeftRadius: number;
+  bottomRightRadius: number;
 }
 
 interface LineNode extends DefaultShapeMixin, ConstraintMixin {
-  readonly type: 'LINE'
-  clone(): LineNode
+  readonly type: 'LINE';
+  clone(): LineNode;
 }
 
 interface EllipseNode extends DefaultShapeMixin, ConstraintMixin, CornerMixin {
-  readonly type: 'ELLIPSE'
-  clone(): EllipseNode
-  arcData: ArcData
+  readonly type: 'ELLIPSE';
+  clone(): EllipseNode;
+  arcData: ArcData;
 }
 
 interface PolygonNode extends DefaultShapeMixin, ConstraintMixin, CornerMixin {
-  readonly type: 'POLYGON'
-  clone(): PolygonNode
-  pointCount: number
+  readonly type: 'POLYGON';
+  clone(): PolygonNode;
+  pointCount: number;
 }
 
 interface StarNode extends DefaultShapeMixin, ConstraintMixin, CornerMixin {
-  readonly type: 'STAR'
-  clone(): StarNode
-  pointCount: number
-  innerRadius: number
+  readonly type: 'STAR';
+  clone(): StarNode;
+  pointCount: number;
+  innerRadius: number;
 }
 
 interface VectorNode extends DefaultShapeMixin, ConstraintMixin, CornerMixin {
-  readonly type: 'VECTOR'
-  clone(): VectorNode
-  vectorNetwork: VectorNetwork
-  vectorPaths: VectorPaths
-  handleMirroring: HandleMirroring | symbol
+  readonly type: 'VECTOR';
+  clone(): VectorNode;
+  vectorNetwork: VectorNetwork;
+  vectorPaths: VectorPaths;
+  handleMirroring: HandleMirroring | symbol;
 }
 
 interface TextNode extends DefaultShapeMixin, ConstraintMixin {
-  readonly type: 'TEXT'
-  clone(): TextNode
-  characters: string
-  readonly hasMissingFont: boolean
-  textAlignHorizontal: 'LEFT' | 'CENTER' | 'RIGHT' | 'JUSTIFIED'
-  textAlignVertical: 'TOP' | 'CENTER' | 'BOTTOM'
-  textAutoResize: 'NONE' | 'WIDTH_AND_HEIGHT' | 'HEIGHT'
-  paragraphIndent: number
-  paragraphSpacing: number
-  autoRename: boolean
+  readonly type: 'TEXT';
+  clone(): TextNode;
+  characters: string;
+  readonly hasMissingFont: boolean;
+  textAlignHorizontal: 'LEFT' | 'CENTER' | 'RIGHT' | 'JUSTIFIED';
+  textAlignVertical: 'TOP' | 'CENTER' | 'BOTTOM';
+  textAutoResize: 'NONE' | 'WIDTH_AND_HEIGHT' | 'HEIGHT';
+  paragraphIndent: number;
+  paragraphSpacing: number;
+  autoRename: boolean;
 
-  textStyleId: string | symbol
-  fontSize: number | symbol
-  fontName: FontName | symbol
-  textCase: TextCase | symbol
-  textDecoration: TextDecoration | symbol
-  letterSpacing: LetterSpacing | symbol
-  lineHeight: LineHeight | symbol
+  textStyleId: string | symbol;
+  fontSize: number | symbol;
+  fontName: FontName | symbol;
+  textCase: TextCase | symbol;
+  textDecoration: TextDecoration | symbol;
+  letterSpacing: LetterSpacing | symbol;
+  lineHeight: LineHeight | symbol;
 
-  getRangeFontSize(start: number, end: number): number | symbol
-  setRangeFontSize(start: number, end: number, value: number): void
-  getRangeFontName(start: number, end: number): FontName | symbol
-  setRangeFontName(start: number, end: number, value: FontName): void
-  getRangeTextCase(start: number, end: number): TextCase | symbol
-  setRangeTextCase(start: number, end: number, value: TextCase): void
-  getRangeTextDecoration(start: number, end: number): TextDecoration | symbol
+  getRangeFontSize(start: number, end: number): number | symbol;
+  setRangeFontSize(start: number, end: number, value: number): void;
+  getRangeFontName(start: number, end: number): FontName | symbol;
+  setRangeFontName(start: number, end: number, value: FontName): void;
+  getRangeTextCase(start: number, end: number): TextCase | symbol;
+  setRangeTextCase(start: number, end: number, value: TextCase): void;
+  getRangeTextDecoration(start: number, end: number): TextDecoration | symbol;
   setRangeTextDecoration(
     start: number,
     end: number,
     value: TextDecoration,
-  ): void
-  getRangeLetterSpacing(start: number, end: number): LetterSpacing | symbol
-  setRangeLetterSpacing(start: number, end: number, value: LetterSpacing): void
-  getRangeLineHeight(start: number, end: number): LineHeight | symbol
-  setRangeLineHeight(start: number, end: number, value: LineHeight): void
-  getRangeFills(start: number, end: number): Paint[] | symbol
-  setRangeFills(start: number, end: number, value: Paint[]): void
-  getRangeTextStyleId(start: number, end: number): string | symbol
-  setRangeTextStyleId(start: number, end: number, value: string): void
-  getRangeFillStyleId(start: number, end: number): string | symbol
-  setRangeFillStyleId(start: number, end: number, value: string): void
+  ): void;
+  getRangeLetterSpacing(start: number, end: number): LetterSpacing | symbol;
+  setRangeLetterSpacing(start: number, end: number, value: LetterSpacing): void;
+  getRangeLineHeight(start: number, end: number): LineHeight | symbol;
+  setRangeLineHeight(start: number, end: number, value: LineHeight): void;
+  getRangeFills(start: number, end: number): Paint[] | symbol;
+  setRangeFills(start: number, end: number, value: Paint[]): void;
+  getRangeTextStyleId(start: number, end: number): string | symbol;
+  setRangeTextStyleId(start: number, end: number, value: string): void;
+  getRangeFillStyleId(start: number, end: number): string | symbol;
+  setRangeFillStyleId(start: number, end: number, value: string): void;
 }
 
 interface ComponentNode extends DefaultContainerMixin {
-  readonly type: 'COMPONENT'
-  clone(): ComponentNode
+  readonly type: 'COMPONENT';
+  clone(): ComponentNode;
 
-  createInstance(): InstanceNode
-  description: string
-  readonly remote: boolean
-  readonly key: string // The key to use with "importComponentByKeyAsync"
+  createInstance(): InstanceNode;
+  description: string;
+  readonly remote: boolean;
+  readonly key: string; // The key to use with "importComponentByKeyAsync"
 }
 
 interface InstanceNode extends DefaultContainerMixin {
-  readonly type: 'INSTANCE'
-  clone(): InstanceNode
-  masterComponent: ComponentNode
+  readonly type: 'INSTANCE';
+  clone(): InstanceNode;
+  masterComponent: ComponentNode;
 }
 
 interface BooleanOperationNode
   extends DefaultShapeMixin,
     ChildrenMixin,
     CornerMixin {
-  readonly type: 'BOOLEAN_OPERATION'
-  clone(): BooleanOperationNode
-  booleanOperation: 'UNION' | 'INTERSECT' | 'SUBTRACT' | 'EXCLUDE'
+  readonly type: 'BOOLEAN_OPERATION';
+  clone(): BooleanOperationNode;
+  booleanOperation: 'UNION' | 'INTERSECT' | 'SUBTRACT' | 'EXCLUDE';
 }
 
-type BaseNode = DocumentNode | PageNode | SceneNode
+type BaseNode = DocumentNode | PageNode | SceneNode;
 
 type SceneNode =
   | SliceNode
@@ -682,7 +682,7 @@ type SceneNode =
   | EllipseNode
   | PolygonNode
   | RectangleNode
-  | TextNode
+  | TextNode;
 
 type NodeType =
   | 'DOCUMENT'
@@ -699,53 +699,53 @@ type NodeType =
   | 'ELLIPSE'
   | 'POLYGON'
   | 'RECTANGLE'
-  | 'TEXT'
+  | 'TEXT';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Styles
-type StyleType = 'PAINT' | 'TEXT' | 'EFFECT' | 'GRID'
+type StyleType = 'PAINT' | 'TEXT' | 'EFFECT' | 'GRID';
 
 interface BaseStyle {
-  readonly id: string
-  readonly type: StyleType
-  name: string
-  description: string
-  remote: boolean
-  readonly key: string // The key to use with "importStyleByKeyAsync"
-  remove(): void
+  readonly id: string;
+  readonly type: StyleType;
+  name: string;
+  description: string;
+  remote: boolean;
+  readonly key: string; // The key to use with "importStyleByKeyAsync"
+  remove(): void;
 }
 
 interface PaintStyle extends BaseStyle {
-  type: 'PAINT'
-  paints: ReadonlyArray<Paint>
+  type: 'PAINT';
+  paints: ReadonlyArray<Paint>;
 }
 
 interface TextStyle extends BaseStyle {
-  type: 'TEXT'
-  fontSize: number
-  textDecoration: TextDecoration
-  fontName: FontName
-  letterSpacing: LetterSpacing
-  lineHeight: LineHeight
-  paragraphIndent: number
-  paragraphSpacing: number
-  textCase: TextCase
+  type: 'TEXT';
+  fontSize: number;
+  textDecoration: TextDecoration;
+  fontName: FontName;
+  letterSpacing: LetterSpacing;
+  lineHeight: LineHeight;
+  paragraphIndent: number;
+  paragraphSpacing: number;
+  textCase: TextCase;
 }
 
 interface EffectStyle extends BaseStyle {
-  type: 'EFFECT'
-  effects: ReadonlyArray<Effect>
+  type: 'EFFECT';
+  effects: ReadonlyArray<Effect>;
 }
 
 interface GridStyle extends BaseStyle {
-  type: 'GRID'
-  layoutGrids: ReadonlyArray<LayoutGrid>
+  type: 'GRID';
+  layoutGrids: ReadonlyArray<LayoutGrid>;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Other
 
 interface Image {
-  readonly hash: string
-  getBytesAsync(): Promise<Uint8Array>
+  readonly hash: string;
+  getBytesAsync(): Promise<Uint8Array>;
 }
