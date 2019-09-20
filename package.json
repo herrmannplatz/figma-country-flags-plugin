@@ -7,7 +7,7 @@
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development --watch",
     "fix": "npm run prettier -- --write",
-    "prettier": "prettier \"**/*.{json,md,css,ts,yml,js}\"",
+    "prettier": "prettier \"**/*.{json,md,css,ts,tsx,js}\"",
     "test": "npm run prettier -- --list-different"
   },
   "keywords": [],
