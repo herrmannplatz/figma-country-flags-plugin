@@ -1,12 +1,17 @@
-# figma-flags-plugin
+# figma-country-flags-plugin
 
 ![GitHub Logo](artwork.png)
 
 > Add country flags to your figma designs.
 
-Build with [github.com/lipis/flag-icon-css](https://github.com/lipis/flag-icon-css)
+## Features
+
+- Search for flags by country name or code
+- Choose between squared and non-sqared flags
 
 ## Roadmap
 
-- Multiselect
 - Round flags
+- Multiselect
+
+Build with [github.com/lipis/flag-icon-css](https://github.com/lipis/flag-icon-css)
