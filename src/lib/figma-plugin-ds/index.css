@@ -7,27 +7,27 @@
   font-style: normal;
   font-weight: 400;
   src: url(https://rsms.me/inter/font-files/Inter-Regular.woff2?v=3.7)
-      format("woff2"),
+      format('woff2'),
     url(https://rsms.me/inter/font-files/Inter-Regular.woff?v=3.7)
-      format("woff");
+      format('woff');
 }
 @font-face {
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
   src: url(https://rsms.me/inter/font-files/Inter-Medium.woff2?v=3.7)
-      format("woff2"),
+      format('woff2'),
     url(https://rsms.me/inter/font-files/Inter-Medium.woff2?v=3.7)
-      format("woff");
+      format('woff');
 }
 @font-face {
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
   src: url(https://rsms.me/inter/font-files/Inter-SemiBold.woff2?v=3.7)
-      format("woff2"),
+      format('woff2'),
     url(https://rsms.me/inter/font-files/Inter-SemiBold.woff2?v=3.7)
-      format("woff");
+      format('woff');
 }
 .label {
   display: -webkit-box;
@@ -636,7 +636,7 @@
   height: 5px;
   margin-top: 6px;
   margin-left: 4px;
-  content: "";
+  content: '';
   background-color: transparent;
   background-image: url(data:image/svg+xml;utf8,%3Csvg%20fill%3D%22none%22%20height%3D%225%22%20viewBox%3D%220%200%207%205%22%20width%3D%227%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20clip-rule%3D%22evenodd%22%20d%3D%22m3%203.70711-3-3.000003.707107-.707107%202.646443%202.64645%202.64645-2.64645.70711.707107-3%203.000003-.35356.35355z%22%20fill%3D%22%23000%22%20fill-opacity%3D%22.3%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
 }
@@ -802,7 +802,7 @@
   display: block;
   width: 24px;
   height: 10px;
-  content: "";
+  content: '';
   -webkit-transition: background-color 0 0.2s;
   transition: background-color 0 0.2s;
   border: 1px solid #000;
@@ -816,7 +816,7 @@
   display: block;
   width: 10px;
   height: 10px;
-  content: "";
+  content: '';
   -webkit-transition: -webkit-transform 0.2s;
   transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
@@ -877,7 +877,7 @@
   width: 10px;
   height: 10px;
   margin: 2px 10px 0 10px;
-  content: "";
+  content: '';
   border: 1px solid #000;
   border-radius: 2px;
 }
@@ -1069,7 +1069,7 @@
   display: block;
   width: 16px;
   height: 16px;
-  content: "";
+  content: '';
   opacity: 0.3;
   background-image: url(data:image/svg+xml;utf8,%3Csvg%20fill%3D%22none%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20width%3D%2216%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m11%208-4-3v6z%22%20fill%3D%22%23000%22%2F%3E%3C%2Fsvg%3E);
   background-repeat: no-repeat;
