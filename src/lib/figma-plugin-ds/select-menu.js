@@ -1,12 +1,11 @@
-(function () {
-
+(function() {
   'use strict';
 
   // DEFAULT SETTINGS //////////
   var defaults = {
     selector: 'select-menu',
-    position: 'under'
-  }
+    position: 'under',
+  };
   //position options
   // 'positionToSelected' = open menu to selected item
   // 'under' opens drop down below select menu
@@ -21,10 +20,8 @@
 
   //create the select menus
   function createMenus() {
-
     let targetLen = targets.length;
     for (let i = 0; i < targetLen; i++) {
-
       //create menu element wrapper + ul + button + hide select menu
       createWrapper(document.createElement('div'), i);
 
@@ -46,9 +43,10 @@
 
         //loop through option groups
         for (let k = 0; k < optionGroups.length; k++) {
-
           //get children of option groups
-          let optionGroupChildren = optionGroups[k].getElementsByTagName('option');
+          let optionGroupChildren = optionGroups[k].getElementsByTagName(
+            'option',
+          );
 
           //create divider element
           let divider = document.createElement('div');
@@ -57,7 +55,6 @@
           // if labels are present, put them before the list item
           // otherwise put a divider after (unless it is the last item)
           if (hasLabels == true) {
-
             //create divider
             let dividerLabel = document.createElement('span');
             let labelText = document.createTextNode(optionGroups[k].label);
@@ -78,10 +75,8 @@
             for (let j = 0; j < optionGroupChildren.length; j++) {
               createListItem(optionGroupChildren[j]);
             }
-
           } else {
-
-            // create the list item 
+            // create the list item
             for (let j = 0; j < optionGroupChildren.length; j++) {
               createListItem(optionGroupChildren[j]);
             }
@@ -95,16 +90,12 @@
 
               //calculate height of item to offset menu items
               addItemHeight(dividerLine);
-
             }
-
           }
 
-          //prevent clicks on optgroup dividers					
+          //prevent clicks on optgroup dividers
           divider.addEventListener('click', stopProp, false);
-
         }
-
       } else {
         //no there are no option groups
 
@@ -113,11 +104,8 @@
           //console.log(objectData.elements[i].options[k]);
           createListItem(targets[i].options[k]);
         }
-
       }
-
     }
-
   }
 
   //create wrapper element
@@ -129,7 +117,6 @@
 
     //set the selected option to the correct element if not set
     element.options[element.selectedIndex].selected = true;
-
 
     //create the div wrapper
     element.parentNode.insertBefore(selectWrapper, element);
@@ -148,7 +135,9 @@
       selectButtonLabelText = document.createTextNode(element.options[0].text);
     } else {
       let index = element.selectedIndex;
-      selectButtonLabelText = document.createTextNode(element.options[index].text);
+      selectButtonLabelText = document.createTextNode(
+        element.options[index].text,
+      );
     }
 
     //assign class names
@@ -169,16 +158,16 @@
       optionList.style.top = 0;
     }
 
-    //add event listener		
+    //add event listener
     selectButton.addEventListener('click', displayMenu, false);
   }
 
   //create list item
   function createListItem(item) {
-    if (item.value != "") {
-      let listItem = document.createElement("li");
-      let listIcon = document.createElement("span");
-      let listText = document.createElement("span");
+    if (item.value != '') {
+      let listItem = document.createElement('li');
+      let listIcon = document.createElement('span');
+      let listText = document.createElement('span');
 
       listItem.className = selector + '__list-item';
       listIcon.className = selector + '__list-item-icon';
@@ -202,33 +191,30 @@
         listItem.classList.add(selector + '__list-item--active');
 
         if (settings.position == 'positionToSelection') {
-          let menuPosition = -Math.abs(parseInt(listItem.getAttribute('position')));
+          let menuPosition = -Math.abs(
+            parseInt(listItem.getAttribute('position')),
+          );
           optionList.style.top = menuPosition + 'px';
         }
-
       }
 
-      //event listener			
+      //event listener
       listItem.addEventListener('click', displayMenu, false);
     }
-
   }
 
   //function display menu
-  var displayMenu = function (event) {
+  var displayMenu = function(event) {
     let element = this;
 
     //determine if the the menu button or item is clicked
     if (element.tagName == 'BUTTON') {
-
       this.classList.toggle(selector + '__button--active');
 
       //toggle the dropdown
       let dropdown = element.parentNode.querySelector('UL');
       dropdown.classList.toggle(selector + '__list--active');
-
     } else if (element.tagName == 'LI') {
-
       let dropdown = element.parentNode.parentNode.querySelector('UL');
 
       //remove active classses from all menus
@@ -246,8 +232,8 @@
       let selectItems = select.querySelectorAll('option');
       let selectItemsLen = selectItems.length;
 
-      selectItems.forEach((item) => {
-        item.removeAttribute("selected");
+      selectItems.forEach(item => {
+        item.removeAttribute('selected');
       });
 
       select.value = selectedValue;
@@ -255,7 +241,7 @@
       for (let i = 0; i < selectItemsLen; i++) {
         let value = selectItems[i].value;
         if (value == selectedValue) {
-          selectItems[i].setAttribute('selected', 'selected')
+          selectItems[i].setAttribute('selected', 'selected');
         }
       }
 
@@ -274,13 +260,13 @@
       dropdown.classList.toggle(selector + '__list--active');
 
       if (settings.position == 'positionToSelection') {
-        let menuPosition = -Math.abs(parseInt(element.getAttribute('position')));
+        let menuPosition = -Math.abs(
+          parseInt(element.getAttribute('position')),
+        );
         element.parentNode.style.top = menuPosition + 'px';
       }
-
     }
-
-  }
+  };
 
   //updates the selected value of the select menu
   function selectItem(selectedID, selectedValue) {
@@ -289,19 +275,18 @@
     selectElement.setAttribute('selected', 'selected');
   }
 
-
   //EVENT HANDLERS //////////
 
   //stop event propagation
-  var stopProp = function (event) {
+  var stopProp = function(event) {
     event.stopPropagation();
-  }
+  };
 
   //track clicks outside the menu
-  var isOutside = function (event) {
+  var isOutside = function(event) {
     let menus = document.querySelectorAll('select.' + selector);
 
-    menus.forEach((menu) => {
+    menus.forEach(menu => {
       let parent = menu.parentNode;
       let menuList = parent.querySelector('UL');
       let button = parent.querySelector('BUTTON');
@@ -314,38 +299,47 @@
         }
       }
     });
-  }
-
+  };
 
   //HELPER FUNCTIONS //////////
 
   //increment itemHeight
   function addItemHeight(element) {
-
     //get key dimensions to calculate height
     let dimensions = [
-      parseInt(window.getComputedStyle(element, null).getPropertyValue('margin-top')),
-      parseInt(window.getComputedStyle(element, null).getPropertyValue('margin-bottom')),
-      parseInt(window.getComputedStyle(element, null).getPropertyValue('padding-top')),
-      parseInt(window.getComputedStyle(element, null).getPropertyValue('padding-bottom')),
-      parseInt(window.getComputedStyle(element, null).getPropertyValue('height')),
+      parseInt(
+        window.getComputedStyle(element, null).getPropertyValue('margin-top'),
+      ),
+      parseInt(
+        window
+          .getComputedStyle(element, null)
+          .getPropertyValue('margin-bottom'),
+      ),
+      parseInt(
+        window.getComputedStyle(element, null).getPropertyValue('padding-top'),
+      ),
+      parseInt(
+        window
+          .getComputedStyle(element, null)
+          .getPropertyValue('padding-bottom'),
+      ),
+      parseInt(
+        window.getComputedStyle(element, null).getPropertyValue('height'),
+      ),
     ];
     itemHeight += arraySum(dimensions);
   }
 
   //helper function to return sum of array
   function arraySum(data) {
-    return data.reduce(function (a, b) {
-      return a + b
+    return data.reduce(function(a, b) {
+      return a + b;
     }, 0);
   }
 
-
   // PUBLIC FUNCTIONS /////////////
   window.selectMenu = {
-
-    init: function (opts) {
-
+    init: function(opts) {
       if (init == true) {
         selectMenu.destroy();
       }
@@ -362,13 +356,11 @@
       init = true;
     },
 
-    destroy: function () {
-
+    destroy: function() {
       //destroy the elements
       let selectMenus = document.querySelectorAll('select.' + selector);
 
-      selectMenus.forEach((menu) => {
-
+      selectMenus.forEach(menu => {
         let parent = menu.parentNode;
         let button = parent.querySelector('BUTTON');
         let menuList = parent.querySelector('UL');
@@ -377,15 +369,12 @@
         menuList.remove();
 
         parent.outerHTML = parent.innerHTML;
-
       });
 
       //remove event handler
       document.removeEventListener('click', isOutside, false);
 
       init = false;
-    }
-
-  }
-
+    },
+  };
 })();

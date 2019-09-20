@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, {useState, useEffect} from 'react';
+import ReactDOM from 'react-dom';
 
 // figma-plugin-cs
-import "./lib/figma-plugin-ds/icon-input";
-import "./lib/figma-plugin-ds/select-menu";
-import "./lib/figma-plugin-ds/index.css";
+import './lib/figma-plugin-ds/icon-input';
+import './lib/figma-plugin-ds/select-menu';
+import './lib/figma-plugin-ds/index.css';
 
-import SearchInput from "./components/SearchInput";
-import Settings from "./components/Settings";
+import SearchInput from './components/SearchInput';
+import Settings from './components/Settings';
 
-import { countries, continents } from "./lib/flag-icons";
-import { includes, decodeDataURI } from "./lib/utils";
+import {countries, continents} from './lib/flag-icons';
+import {includes, decodeDataURI} from './lib/utils';
 
-import "./ui.css";
+import './ui.css';
 
 const App = () => {
-  const noContinent = "World";
-  const [query, setQuery] = useState("");
-  const [ratio, setRatio] = useState("4x3");
+  const noContinent = 'World';
+  const [query, setQuery] = useState('');
+  const [ratio, setRatio] = useState('4x3');
   const [continent, setContinent] = useState(noContinent);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const App = () => {
     (window as any).iconInput.init();
   }, []);
 
-  const flags = countries.filter(({ continent: c, name, alpha_2 }) => {
+  const flags = countries.filter(({continent: c, name, alpha_2}) => {
     const isSelectedContinent = c === continent || continent === noContinent;
     const matchesQuery =
       includes(name, query) || query.toUpperCase() === alpha_2;
@@ -34,8 +34,8 @@ const App = () => {
   });
 
   const onCreate = flag => {
-    const svg = decodeDataURI(flag["flag_" + ratio]);
-    parent.postMessage({ pluginMessage: { type: "create-flag", svg } }, "*");
+    const svg = decodeDataURI(flag['flag_' + ratio]);
+    parent.postMessage({pluginMessage: {type: 'create-flag', svg}}, '*');
   };
 
   return (
@@ -57,7 +57,7 @@ const App = () => {
               className="flag"
               key={flag.alpha_2}
             >
-              <img src={flag["flag_" + ratio]} />
+              <img src={flag['flag_' + ratio]} />
               <div className="flag-name">{flag.name}</div>
             </div>
           ))}
@@ -67,4 +67,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("react-page"));
+ReactDOM.render(<App />, document.getElementById('react-page'));

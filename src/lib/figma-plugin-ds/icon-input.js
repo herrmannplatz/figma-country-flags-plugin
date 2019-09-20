@@ -1,56 +1,51 @@
-(function () {
-
+(function() {
   'use strict';
 
   // DEFAULT SETTINGS //////////
   var defaults = {
-    selector: '.input-icon'
-  }
+    selector: '.input-icon',
+  };
 
   //VARIABLES //////////
   var selector;
 
   //PRIVATE FUNCTIONS //////////
-  var inputIconFocusIn = function (event) {
+  var inputIconFocusIn = function(event) {
     let parent = this.parentNode;
     let iconNode = parent.querySelector('.icon');
     iconNode.classList.remove('icon--black-3');
     iconNode.classList.add('icon--blue');
-  }
+  };
 
-  var inputIconFocusOut = function (event) {
+  var inputIconFocusOut = function(event) {
     let parent = this.parentNode;
     let iconNode = parent.querySelector('.icon');
     iconNode.classList.add('icon--black-3');
     iconNode.classList.remove('icon--blue');
-  }
+  };
 
   //PUBLIC FUNCTIONS //////////
   window.iconInput = {
-
-    init: function (opts) {
+    init: function(opts) {
       let settings = Object.assign({}, defaults, opts);
       selector = settings.selector;
       let elements = document.querySelectorAll(selector);
 
       //initialize
-      elements.forEach((element) => {
+      elements.forEach(element => {
         element.addEventListener('focusin', inputIconFocusIn, false);
         element.addEventListener('focusout', inputIconFocusOut, false);
       });
     },
 
-    destroy: function () {
+    destroy: function() {
       let elements = document.querySelectorAll(selector);
 
       //initialize
-      elements.forEach((element) => {
+      elements.forEach(element => {
         element.removeEventListener('focusin', inputIconFocusIn, false);
         element.removeEventListener('focusout', inputIconFocusOut, false);
       });
-
-    }
-
+    },
   };
-
 })();

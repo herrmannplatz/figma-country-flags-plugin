@@ -1,16 +1,19 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Inter, sans-serif";
+  font-family: 'Inter, sans-serif';
   font-size: 12px;
 }
 
-.visuallyhidden { 
-  position: absolute; 
-  overflow: hidden; 
-  clip: rect(0 0 0 0); 
-  height: 1px; width: 1px; 
-  margin: -1px; padding: 0; border: 0; 
+.visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }
 
 .header {
@@ -46,6 +49,6 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .flag-name {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
 }

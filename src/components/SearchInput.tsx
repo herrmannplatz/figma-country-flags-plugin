@@ -1,7 +1,7 @@
-import * as React from "react";
-import "./SearchInput.css";
+import * as React from 'react';
+import './SearchInput.css';
 
-function SearchInput({ onChange }) {
+function SearchInput({onChange}) {
   return (
     <div className="input__section">
       <div className="input-icon">
