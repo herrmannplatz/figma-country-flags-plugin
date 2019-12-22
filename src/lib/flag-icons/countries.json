@@ -740,16 +740,6 @@
     "name": "Finland"
   },
   {
-    "alpha_2": "MK",
-    "alpha_3": "MKD",
-    "capital": "Skopje",
-    "continent": "Europe",
-    "flag_1x1": "./1x1/mk.svg",
-    "flag_4x3": "./4x3/mk.svg",
-    "iso": true,
-    "name": "North Macedonia"
-  },
-  {
     "alpha_2": "FR",
     "alpha_3": "FRA",
     "capital": "Paris",
@@ -1610,6 +1600,16 @@
     "name": "North Korea"
   },
   {
+    "alpha_2": "MK",
+    "alpha_3": "MKD",
+    "capital": "Skopje",
+    "continent": "Europe",
+    "flag_1x1": "./1x1/mk.svg",
+    "flag_4x3": "./4x3/mk.svg",
+    "iso": true,
+    "name": "North Macedonia"
+  },
+  {
     "alpha_2": "GB-NIR",
     "alpha_3": "GB-NIR",
     "capital": "Belfast",
@@ -1622,7 +1622,7 @@
   {
     "alpha_2": "MP",
     "alpha_3": "MNP",
-    "capital": "Capitol Hill",
+    "capital": "Saipan",
     "continent": "Oceania",
     "flag_1x1": "./1x1/mp.svg",
     "flag_4x3": "./4x3/mp.svg",

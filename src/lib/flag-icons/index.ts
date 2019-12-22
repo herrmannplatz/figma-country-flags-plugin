@@ -9,8 +9,8 @@ importAll(require.context("flag-icon-css/flags", true, /\.svg$/));
 
 export const countries = countriesJSON.map(country => ({
   ...country,
-  flag_1x1: cache[country.flag_1x1],
-  flag_4x3: cache[country.flag_4x3]
+  flag_1x1: cache[country.flag_1x1].default,
+  flag_4x3: cache[country.flag_4x3].default
 }));
 
 export const continents = [...new Set(countries.map(_ => _.continent))];
