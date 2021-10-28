@@ -14,4 +14,4 @@
 - Round flags
 - Multiselect
 
-Build with [github.com/lipis/flag-icon-css](https://github.com/lipis/flag-icon-css)
+Build with [github.com/lipis/flag-icons](https://github.com/lipis/flag-icons).
