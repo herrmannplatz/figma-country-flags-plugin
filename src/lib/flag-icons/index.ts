@@ -1,4 +1,4 @@
-const countriesJSON = require("./countries");
+const countryJSON = require("./country");
 const cache = {};
 
 function importAll(r) {
@@ -7,10 +7,8 @@ function importAll(r) {
 
 importAll(require.context("flag-icon-css/flags", true, /\.svg$/));
 
-export const countries = countriesJSON.map(country => ({
+export const countries = countryJSON.map(country => ({
   ...country,
   flag_1x1: cache[country.flag_1x1].default,
   flag_4x3: cache[country.flag_4x3].default
 }));
-
-export const continents = [...new Set(countries.map(_ => _.continent))];

@@ -1,27 +1,13 @@
 import React from "react";
 import "./Settings.css";
 
-function Settings({ categories, ratio, onChangeContinent, onChangeRatio }) {
+function Settings({ ratio, onChangeRatio }) {
   const segmentControlClass = active =>
     "segmented_control--_segment segmented_control--segment" +
     (active ? "Selected" : "Unselected");
 
   return (
     <div className="settings">
-      <div className="settings__item">
-        <div className="label">Continent</div>
-        <select
-          className="select-menu visuallyhidden"
-          onChange={e => onChangeContinent(e.target.value)}
-          defaultValue="World"
-        >
-          {categories.map(category => (
-            <option key={category as string} value={category as string}>
-              {category}
-            </option>
-          ))}
-        </select>
-      </div>
       <div className="settings__item">
         <div className="label">Aspect Ratio</div>
         <div className="segmented_control--container">
