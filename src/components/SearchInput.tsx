@@ -10,7 +10,7 @@ function SearchInput({ onChange }) {
         </div>
         <input
           type="input"
-          onChange={e => onChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
           className="input-icon__input"
           placeholder="Search country name or code"
         />

@@ -6,7 +6,9 @@
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fix": "yarn prettier --write",
+    "prettier": "prettier \"**/*.{ts,css,js,md,tsx,html}\"",
+    "test": "yarn prettier --list-different"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +21,7 @@
     "flag-icon-css": "^4.1.4",
     "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "^3.2.0",
+    "prettier": "^2.4.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "style-loader": "^1.1.1",

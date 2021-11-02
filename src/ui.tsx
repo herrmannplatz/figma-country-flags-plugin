@@ -25,12 +25,11 @@ const App = () => {
   }, []);
 
   const flags = countries.filter(({ name, code }) => {
-    const matchesQuery =
-      includes(name, query) || query === code;
+    const matchesQuery = includes(name, query) || query === code;
     return matchesQuery;
   });
 
-  const onCreate = flag => {
+  const onCreate = (flag) => {
     const svg = decodeDataURI(flag["flag_" + ratio]);
     parent.postMessage({ pluginMessage: { type: "create-flag", svg } }, "*");
   };
@@ -39,14 +38,11 @@ const App = () => {
     <div>
       <div className="header">
         <SearchInput onChange={setQuery} />
-        <Settings
-          ratio={ratio}
-          onChangeRatio={setRatio}
-        />
+        <Settings ratio={ratio} onChangeRatio={setRatio} />
       </div>
       <div className="content">
         <div className="flags">
-          {flags.map(flag => (
+          {flags.map((flag) => (
             <div
               onClick={() => onCreate(flag)}
               className="flag"
