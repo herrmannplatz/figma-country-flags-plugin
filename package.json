@@ -6,7 +6,9 @@
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "fix": "yarn prettier --write",
+    "prettier": "prettier \"**/*.{ts,css,js,md,tsx,html}\"",
+    "test": "yarn prettier --list-different"
   },
   "keywords": [],
   "author": "",
@@ -19,13 +21,14 @@
     "flag-icon-css": "^4.1.4",
     "html-webpack-inline-source-plugin": "0.0.10",
     "html-webpack-plugin": "^3.2.0",
+    "prettier": "^2.4.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "style-loader": "^1.1.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.4",
     "url-loader": "^3.0.0",
-    "webpack": "^4.41.4",
-    "webpack-cli": "^3.3.10"
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1"
   }
 }

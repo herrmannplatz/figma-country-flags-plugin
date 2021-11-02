@@ -1,6 +1,6 @@
 figma.showUI(__html__, { width: 350, height: 400 });
 
-figma.ui.onmessage = msg => {
+figma.ui.onmessage = (msg) => {
   if (msg.type === "create-flag") {
     const icon = figma.createNodeFromSvg(msg.svg);
     const scaleFactor = 1 / 8;

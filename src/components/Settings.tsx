@@ -2,7 +2,7 @@ import React from "react";
 import "./Settings.css";
 
 function Settings({ ratio, onChangeRatio }) {
-  const segmentControlClass = active =>
+  const segmentControlClass = (active) =>
     "segmented_control--_segment segmented_control--segment" +
     (active ? "Selected" : "Unselected");
 
