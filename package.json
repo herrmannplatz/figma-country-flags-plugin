@@ -6,9 +6,9 @@
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development --watch",
-    "fix": "yarn prettier --write",
+    "fix": "npm run prettier -- --write",
     "prettier": "prettier \"**/*.{ts,css,js,md,tsx,html}\"",
-    "test": "yarn prettier --list-different"
+    "test": "npm run prettier -- --list-different"
   },
   "keywords": [],
   "author": "",
