@@ -31,7 +31,18 @@ const App = () => {
 
   const onCreate = (flag) => {
     const svg = decodeDataURI(flag["flag_" + ratio]);
-    parent.postMessage({ pluginMessage: { type: "create-flag", svg } }, "*");
+    parent.postMessage(
+      {
+        pluginMessage: {
+          type: "create-flag",
+          svg,
+          ratio,
+          name: flag.name,
+          code: flag.code,
+        },
+      },
+      "*"
+    );
   };
 
   return (
