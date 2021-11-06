@@ -15,34 +15,35 @@ module.exports = (env, argv) => ({
 
   module: {
     rules: [
+      // Converts TypeScript code to JavaScript
       { test: /\.tsx?$/, use: "ts-loader", exclude: /node_modules/ },
-      {
-        test: /\.css$/,
-        loader: [{ loader: "style-loader" }, { loader: "css-loader" }],
-      },
-      {
-        test: /\.(png|jpg|gif|webp|svg|zip)$/,
-        loader: [{ loader: "url-loader" }],
-      },
+
+      // Enables including CSS by doing "import './file.css'" in your TypeScript code
+      { test: /\.css$/, use: ["style-loader", { loader: "css-loader" }] },
+
+      // Allows you to use "<%= require('./file.svg') %>" in your HTML code to get a data URI
+      { test: /\.(png|jpg|gif|webp|svg)$/, loader: "url-loader" },
     ],
   },
 
-  resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
-  },
+  // Webpack tries these extensions for you if you omit the extension like "import './file'"
+  resolve: { extensions: [".tsx", ".ts", ".jsx", ".js", "json"] },
 
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "dist"), // Compile into a folder called "dist"
+    path: path.resolve(__dirname, "dist"), // Compile into a folder called "dist",
+    publicPath: "/", // https://github.com/DustinJackson/html-webpack-inline-source-plugin/issues/57
   },
 
+  // Tells Webpack to generate "ui.html" and to inline "ui.ts" into it
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/ui.html",
       filename: "ui.html",
       inlineSource: ".(js)$",
       chunks: ["ui"],
+      inject: "body",
     }),
-    new HtmlWebpackInlineSourcePlugin(),
+    new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
   ],
 });

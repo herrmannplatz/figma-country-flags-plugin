@@ -6,6 +6,7 @@ figma.ui.onmessage = (msg) => {
   if (msg.type === "create-flag") {
     const node = figma.currentPage.selection[0] as BaseNode;
     const icon = figma.createNodeFromSvg(msg.svg);
+    icon.name = `${msg.name} (${msg.code.toUpperCase()})`;
     icon.resize(
       icon.width * ICON_SCALE_FACTOR,
       icon.height * ICON_SCALE_FACTOR
@@ -16,12 +17,12 @@ figma.ui.onmessage = (msg) => {
         case "FRAME":
           icon.x = node.width / 2 - icon.width / 2;
           icon.y = node.height / 2 - icon.height / 2;
-          node.insertChild(0, icon);
+          node.appendChild(icon);
           break;
         case "RECTANGLE":
           icon.x = node.x + node.width / 2 - icon.width / 2;
           icon.y = node.y + node.height / 2 - icon.height / 2;
-          figma.currentPage.selection = [icon];
+          figma.currentPage.appendChild(icon);
           break;
         default:
           break;
@@ -29,7 +30,7 @@ figma.ui.onmessage = (msg) => {
     } else {
       icon.x = figma.viewport.center.x - icon.width / 2;
       icon.y = figma.viewport.center.y - icon.height / 2;
-      figma.currentPage.selection = [icon];
+      figma.currentPage.appendChild(icon);
     }
   }
 };
