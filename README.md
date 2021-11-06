@@ -12,6 +12,5 @@
 ## Roadmap
 
 - Round flags
-- Multiselect
 
 Build with [github.com/lipis/flag-icons](https://github.com/lipis/flag-icons).
