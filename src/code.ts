@@ -7,10 +7,8 @@ figma.ui.onmessage = (msg) => {
     const node = figma.currentPage.selection[0] as BaseNode;
     const icon = figma.createNodeFromSvg(msg.svg);
     icon.name = `${msg.name} (${msg.code.toUpperCase()})`;
-    icon.resize(
-      icon.width * ICON_SCALE_FACTOR,
-      icon.height * ICON_SCALE_FACTOR
-    );
+    icon.constrainProportions = true;
+    icon.rescale(ICON_SCALE_FACTOR);
 
     if (node) {
       switch (node.type) {
