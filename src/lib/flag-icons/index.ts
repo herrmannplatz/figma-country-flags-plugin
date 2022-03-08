@@ -1,11 +1,11 @@
-const countryJSON = require("flag-icon-css/country.json");
+const countryJSON = require("flag-icons/country.json");
 const cache = {};
 
 function importAll(r) {
   r.keys().forEach((key) => (cache[key] = r(key)));
 }
 
-importAll(require.context("flag-icon-css", true, /flags\/.*\.svg$/));
+importAll(require.context("flag-icons", true, /flags\/.*\.svg$/));
 
 export const countries = countryJSON.map((country) => ({
   ...country,
