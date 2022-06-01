@@ -16,12 +16,12 @@
   "dependencies": {
     "flag-icons": "^6.1.1",
     "node": "^17.5.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.42.1",
-    "@types/react": "^17.0.39",
+    "@types/react": "^18.0.10",
     "@types/react-dom": "^17.0.13",
     "@types/webpack-env": "^1.16.3",
     "css-loader": "^6.7.1",
