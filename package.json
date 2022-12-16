@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "flag-icons": "^6.1.1",
-    "node": "^17.5.0",
+    "node": "^19.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
