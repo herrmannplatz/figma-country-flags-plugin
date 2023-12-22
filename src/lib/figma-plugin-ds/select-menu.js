@@ -135,7 +135,7 @@
     } else {
       let index = element.selectedIndex;
       selectButtonLabelText = document.createTextNode(
-        element.options[index].text
+        element.options[index].text,
       );
     }
 
@@ -191,7 +191,7 @@
 
         if (settings.position == "positionToSelection") {
           let menuPosition = -Math.abs(
-            parseInt(listItem.getAttribute("position"))
+            parseInt(listItem.getAttribute("position")),
           );
           optionList.style.top = menuPosition + "px";
         }
@@ -260,7 +260,7 @@
 
       if (settings.position == "positionToSelection") {
         let menuPosition = -Math.abs(
-          parseInt(element.getAttribute("position"))
+          parseInt(element.getAttribute("position")),
         );
         element.parentNode.style.top = menuPosition + "px";
       }
@@ -307,21 +307,23 @@
     //get key dimensions to calculate height
     let dimensions = [
       parseInt(
-        window.getComputedStyle(element, null).getPropertyValue("margin-top")
-      ),
-      parseInt(
-        window.getComputedStyle(element, null).getPropertyValue("margin-bottom")
-      ),
-      parseInt(
-        window.getComputedStyle(element, null).getPropertyValue("padding-top")
+        window.getComputedStyle(element, null).getPropertyValue("margin-top"),
       ),
       parseInt(
         window
           .getComputedStyle(element, null)
-          .getPropertyValue("padding-bottom")
+          .getPropertyValue("margin-bottom"),
       ),
       parseInt(
-        window.getComputedStyle(element, null).getPropertyValue("height")
+        window.getComputedStyle(element, null).getPropertyValue("padding-top"),
+      ),
+      parseInt(
+        window
+          .getComputedStyle(element, null)
+          .getPropertyValue("padding-bottom"),
+      ),
+      parseInt(
+        window.getComputedStyle(element, null).getPropertyValue("height"),
       ),
     ];
     itemHeight += arraySum(dimensions);

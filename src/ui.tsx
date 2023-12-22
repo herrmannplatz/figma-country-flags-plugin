@@ -41,7 +41,7 @@ const App = () => {
           code: flag.code,
         },
       },
-      "*"
+      "*",
     );
   };
 
