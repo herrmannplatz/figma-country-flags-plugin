@@ -2,9 +2,11 @@
   "name": "Country Flags",
   "id": "749888869584535589",
   "api": "1.0.0",
+  "documentAccess": "dynamic-page",
   "main": "dist/code.js",
-  "editorType": [
-    "figma"
-  ],
-  "ui": "dist/ui.html"
+  "ui": "dist/ui.html",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  }
 }

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
+declare global {
+  interface Window {
+    selectMenu: { init: () => void }
+    iconInput: { init: () => void }
+  }
+}
+
 // figma-plugin-cs
 import "./lib/figma-plugin-ds/icon-input";
 import "./lib/figma-plugin-ds/select-menu";
@@ -20,8 +27,8 @@ const App = () => {
 
   useEffect(() => {
     // need to be called when content is rendered
-    (window as any).selectMenu.init();
-    (window as any).iconInput.init();
+    window.selectMenu.init();
+    window.iconInput.init();
   }, []);
 
   const flags = countries.filter(({ name, code }) => {

@@ -1,4 +1,5 @@
-const countryJSON = require("flag-icons/country.json");
+import countryJSON from "flag-icons/country.json";
+
 const cache = {};
 
 function importAll(r) {
