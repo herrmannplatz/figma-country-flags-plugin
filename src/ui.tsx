@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 
 declare global {
   interface Window {
-    selectMenu: { init: () => void }
-    iconInput: { init: () => void }
+    selectMenu: { init: () => void };
+    iconInput: { init: () => void };
   }
 }
 
