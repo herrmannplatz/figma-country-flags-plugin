@@ -16,14 +16,14 @@
   "license": "ISC",
   "dependencies": {
     "flag-icons": "^7.2.1",
-    "react": "^18.2.0",
+    "react": "^19.0.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@figma/eslint-plugin-figma-plugins": "*",
     "@figma/plugin-typings": "*",
     "@types/node": "^20.12.7",
-    "@types/react": "^18.2.45",
+    "@types/react": "^19.0.8",
     "@types/react-dom": "^18.2.18",
     "@types/webpack-env": "^1.18.4",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
