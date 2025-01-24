@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "flag-icons": "^7.2.1",
+    "flag-icons": "^7.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
