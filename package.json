@@ -22,7 +22,7 @@
   "devDependencies": {
     "@figma/eslint-plugin-figma-plugins": "*",
     "@figma/plugin-typings": "*",
-    "@types/node": "^20.12.7",
+    "@types/node": "^22.13.9",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "@types/webpack-env": "^1.18.4",
